@@ -1,12 +1,12 @@
 <?php
 /*
- * The template for displaying all single posts and attachments
+ * The template for displaying Single Post in WordPress
  *
  * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
+ * @author MoBakri
+ * @Date 2021
  */
-get_header(); 
+get_header();
 include(get_template_directory().'/includes/breadcrumb.php');
 ?>
 
@@ -51,14 +51,14 @@ include(get_template_directory().'/includes/breadcrumb.php');
             </div>
         <hr>
     </div>
-   
-  
+
+
       <div class="col-md-3">
-         <?php 
+         <?php
           if (is_active_sidebar('main-sidebar')){
               dynamic_sidebar('main-sidebar');
           }
-          
+
           ?>
       </div>
         </div>
