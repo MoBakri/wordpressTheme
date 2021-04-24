@@ -96,8 +96,8 @@ $all_page = $wp_query->max_num_pages;
 $current_page = max(1, get_query_var('paged'));
 if ($all_page > 1) {
 return paginate_links(array(
-         'base'    => get_pagenum_link().'#_#',
-         'format'  => 'paged/%#%',
+         'base'    => get_pagenum_link().'%_%',
+         'format'  =>  "?paged=%#%",
          'current' => $current_page,
          'total'   => $all_page
 ));
