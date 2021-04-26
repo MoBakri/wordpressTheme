@@ -1,5 +1,16 @@
 <?php
 
+function register_navwalker(){
+	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+}
+add_action( 'after_setup_theme', 'register_navwalker' );
+
+function prefix_modify_nav_menu_args( $args ) {
+    return array_merge( $args, array(
+        'walker' => new WP_Bootstrap_Navwalker(),
+    ) );
+}
+add_filter( 'wp_nav_menu_args', 'prefix_modify_nav_menu_args' );
 
 if ( ! file_exists( get_template_directory() . '/class-wp-bootstrap-navwalker.php' ) ) {
     // File does not exist... return an error.
@@ -62,22 +73,25 @@ function mo_add_script() {
      wp_script_add_data('handle', 'conditional', 'lt IE 9');     // this is run if the script less than IE 9;
 }
 
-
-    /*-- Navigation Bar --*/
+/*-- Navigation Bar --*/
 function mo_nav_bar() {
-    register_nav_menus(array('Primary' =>'Navigation Bar', 'secondery' => 'Mobile Bar'));
+register_nav_menus(array('Primary' =>'Navigation Bar', 'secondery' => 'Mobile Bar'));
 }
 
 function mo_nav() {
-  wp_nav_menu(array('theme_location' => 'Primary',
-                'depth'             => 2,
-                'container'         => 'div',
-                'container_class'   => 'collapse navbar-collapse',
-                'container_id'      => 'bs-example-navbar-collapse-1',
-                'menu_class'        => 'nav navbar-nav',
-                'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-                'walker'            => new WP_Bootstrap_Navwalker(),));
+wp_nav_menu(array('theme_location' => 'Primary',
+            'depth'             => 2,// 1 = no dropdowns, 2 = with dropdowns.
+            'container'         => 'div',
+            'container_class'   => 'collapse navbar-collapse',
+            'container_id'      => 'bs-example-navbar-collapse-1',
+            'menu_class'        => 'nav navbar-nav',
+            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+            'walker'            => new WP_Bootstrap_Navwalker()
+          ));
 }
+
+
+   /* The main action on the theme     */
 
 add_action('wp_enqueue_scripts', 'mo_add_styles');
 add_action('wp_enqueue_scripts', 'mo_add_script');
@@ -85,10 +99,10 @@ add_action('wp_enqueue_scripts', 'mo_add_script');
 
 add_action('init', 'mo_nav_bar'); // action for adding Navigation bar
 
+/*  The End of action  */
 
 
-
-// pagenation function for adding page number 
+// pagenation function for adding page number
 
 function pagenation_function() {
  global $wp_query;
@@ -108,7 +122,7 @@ return paginate_links(array(
  // Add sidebar for your theme
 function add_register_sidebar() {
     register_sidebar(array(
-   
+
         'name'              =>'Main SideBar',
         'id'                =>'main-sidebar',
         'description'       =>'The main sidebar for MoBakri theme',
@@ -117,7 +131,7 @@ function add_register_sidebar() {
         'after_widget'      =>'</div>',
         'before_title'      =>'<div class="class-title-widget">',
         'after_title'       =>'</div>'
-     
+
     ));
 }
 add_action('widgets_init','add_register_sidebar');
@@ -133,15 +147,3 @@ add_action('widgets_init','add_register_sidebar');
 //
 //add_action('the_content', 'paragraph_filter', 0);
 //
-
-
-
-
-
-
-
-
-
-
-
-

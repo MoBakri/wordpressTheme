@@ -6,15 +6,16 @@
     <title>
         <?php bloginfo('name'); ?>
         <?php wp_title('|', 'true', 'left'); ?>
-       
+
     </title>
      <?php wp_head(); ?>
     </head>
     <body>
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">MoBakri Theme </a>
-
+           <a class="navbar-brand" href="<?php echo get_home_url();?>">
+             MoBakri
+           </a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <?php mo_nav(); ?>
     </div>

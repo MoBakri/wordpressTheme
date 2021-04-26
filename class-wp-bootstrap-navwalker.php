@@ -24,7 +24,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 	 */
 	class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 
-		/**
+		/*
 		 * Whether the items_wrap contains schema microdata or not.
 		 *
 		 * @since 4.2.0
@@ -32,7 +32,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 		 */
 		private $has_schema = false;
 
-		/**
+		/*
 		 * Ensure the items_wrap argument contains microdata.
 		 *
 		 * @since 4.2.0
@@ -43,7 +43,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			}
 		}
 
-		/**
+		/*
 		 * Starts the list before the elements are added.
 		 *
 		 * @since WP 3.0.0
@@ -65,7 +65,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			$indent = str_repeat( $t, $depth );
 			// Default class to add to the file.
 			$classes = array( 'dropdown-menu' );
-			/**
+			/*
 			 * Filters the CSS class(es) applied to a menu list element.
 			 *
 			 * @since WP 4.8.0
@@ -95,7 +95,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			$output .= "{$n}{$indent}<ul$class_names $labelledby>{$n}";
 		}
 
-		/**
+		/*
 		 * Starts the element output.
 		 *
 		 * @since WP 3.0.0
@@ -152,7 +152,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			// Join any icon classes plucked from $classes into a string.
 			$icon_class_string = join( ' ', $icon_classes );
 
-			/**
+			/*
 			 * Filters the arguments for a single nav menu item.
 			 *
 			 * @since WP 4.4.0
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			$class_names = join( ' ', $classes );
 			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
-			/**
+			/*
 			 * Filters the ID applied to a menu item's list item element.
 			 *
 			 * @since WP 3.0.1
@@ -281,7 +281,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			/** This filter is documented in wp-includes/post-template.php */
 			$title = apply_filters( 'the_title', $item->title, $item->ID );
 
-			/**
+			/*
 			 * Filters a menu item's title.
 			 *
 			 * @since WP 4.4.0
@@ -323,7 +323,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 		}
 
-		/**
+		/*
 		 * Menu fallback.
 		 *
 		 * If this function is assigned to the wp_nav_menu's fallback_cb variable
@@ -345,7 +345,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			// Menu container opening tag.
 			$show_container = false;
 			if ( $args['container'] ) {
-				/**
+				/*
 				 * Filters the list of HTML tags that are valid for use as menu containers.
 				 *
 				 * @since WP 3.0.0
@@ -383,7 +383,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			}
 		}
 
-		/**
+		/*
 		 * Filter to ensure the items_Wrap argument contains microdata.
 		 *
 		 * @since 4.2.0
@@ -400,7 +400,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			return $args;
 		}
 
-		/**
+		/*
 		 * Find any custom linkmod or icon classes and store in their holder
 		 * arrays then remove them from the main classes array.
 		 *
@@ -450,7 +450,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			return $classes;
 		}
 
-		/**
+		/*
 		 * Return a string containing a linkmod type and update $atts array
 		 * accordingly depending on the decided.
 		 *
@@ -481,7 +481,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			return $linkmod_type;
 		}
 
-		/**
+		/*
 		 * Update the attributes of a nav item depending on the limkmod classes.
 		 *
 		 * @since 4.0.0
@@ -518,7 +518,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			return $atts;
 		}
 
-		/**
+		/*
 		 * Wraps the passed text in a screen reader only class.
 		 *
 		 * @since 4.0.0
@@ -560,7 +560,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			return $output;
 		}
 
-		/**
+		/*
 		 * Return the correct closing tag for the linkmod element.
 		 *
 		 * @since 4.0.0
@@ -584,7 +584,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			return $output;
 		}
 
-		/**
+		/*
 		 * Flattens a multidimensional array to a simple array.
 		 *
 		 * @param array $array a multidimensional array.

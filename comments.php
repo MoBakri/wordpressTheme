@@ -1,9 +1,9 @@
 <?php
 
 if (comments_open()) {
-echo '<h3 class="comment-number">'; // bootstrap list-unstyled;
+echo '<div id="comments" name="comments" class="comment-number">'; // bootstrap list-unstyled;
   comments_number();
-echo '</h3>';
+echo '</div>';
 echo '<ul class="list-comment list-unstyled">';
 wp_list_comments( $args = array(
                     'max_depth'   => 3,

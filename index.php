@@ -2,14 +2,13 @@
 
 
 <div class="main-container">
-
-    <div class="row">
+  <div class="row">
     <?php
     if (have_posts()) :
     while (have_posts()) :
     the_post();?>
         <div class="col-sm-6">
-            <div class="main-post">
+            <div class="main-post index">
 
                 <h3 class="post-title" id="post-<?php the_ID(); ?>" >
                   <a href="<?php the_permalink();?>" >
@@ -20,7 +19,7 @@
 
                 <span class="post-date"><i class="fas fa-clock" ></i> <?php the_time('F j, Y'); ?></span>
                 <span class="post-commend"><i class="fas fa-comments fa-sm fa-lg"></i> <?php comments_popup_link('No comment', '1 Comment', '% Comments', 'comments-link', 'Comments Disable')?></span>
-                <?php the_post_thumbnail('medium_large'); ?>
+                <?php the_post_thumbnail(array(900,430)); ?>
                 <?php the_excerpt();?>
                  <hr>
                 <p class="categories"><i class="fas fa-tags fa-sm"></i><?php the_category(', '); ?> </p>
@@ -28,16 +27,18 @@
                  the_tags('<spna class="post-tags">tags: ',', ','</span>');
                   } else{
                   echo '<span class="post-tags"> tags: No tags</span>';
-} ?></p>
+                  } ?></p>
             </div>
         </div>
     <?php
     endwhile;
     endif;
     ?>
-  
-         <?php
-         echo pagenation_function();
+</div>
+
+        <div class="paginate">
+            <?php
+            echo pagenation_function();
           // echo '<div class="pagination">';
           // if ( get_previous_posts_link() ) {
           //     previous_posts_link('<i class="fas fa-chevron-left fa-fw"></i>Prev');
@@ -51,8 +52,7 @@
           // }
           // echo '</div>';
           ?>
+        </div>
 
-    </div>
 </div>
-
 <?php get_footer(); ?>
